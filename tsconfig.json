@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "isolatedModules": true,
+    "moduleDetection": "force"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "tests"
+  ]
+}
