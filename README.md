@@ -14,3 +14,8 @@ A terminal user interface for ChatGPT.
     - [ ] `--help`
     - [ ] `--verbose`
     - [ ] `--log-dir`
+    - [ ] `--system-msg`
+    - [ ] `--user-msg`
+- [ ] Use type=number for code block prompt
+- [ ] Debug weird line erasing issue on long message
+- [ ] Add a default option to file output

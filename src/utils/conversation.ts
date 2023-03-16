@@ -7,23 +7,35 @@ interface Message {
   content: string;
 }
 
-const initMessages = () => [
-  {
-    role: "system",
-    content: [
-      "You are a helpful assistant whose main job is to write code. ",
-      "If you include code blocks in your responses, always include the ",
-      "language name after the opening triple backticks. ",
-      "For example, ```javascript\nconsole.log('Hello, world!');```",
-    ].join(""),
-  } as Message,
-];
+const defaultSystemMessage = [
+  "You are a helpful assistant whose main job is to write code. ",
+  "If you include code blocks in your responses, always include the ",
+  "language name after the opening triple backticks. ",
+  "For example, ```javascript\nconsole.log('Hello, world!');```",
+].join("");
+
+const initMessages = ({ systemMsg = defaultSystemMessage, userMsg }) => {
+  const messages = [
+    {
+      role: "system",
+      content: systemMsg,
+    } as Message,
+  ];
+
+  if (userMsg) {
+    messages.push({ role: "user", content: userMsg } as Message);
+  }
+
+  return messages;
+};
 
 interface ConversationConstructor {
   apiKey: string;
   // @ts-expect-error
   renderer?: Renderer;
   isDebug?: boolean;
+  systemMsg?: string;
+  userMsg?: string;
 }
 
 class Conversation {
@@ -33,16 +45,22 @@ class Conversation {
   private _renderer: Renderer;
   messages: Message[];
   isDebug: boolean;
+  systemMsg: string;
+  userMsg: string;
 
   constructor({
     apiKey,
     renderer = new MarkdownRenderer(),
     isDebug = false,
+    systemMsg,
+    userMsg,
   }: ConversationConstructor) {
     this._openai = new OpenAIApi(new Configuration({ apiKey }));
     this._renderer = renderer;
-    this.messages = initMessages();
+    this.messages = initMessages({ systemMsg, userMsg });
     this.isDebug = isDebug;
+    this.systemMsg = systemMsg;
+    this.userMsg = userMsg;
   }
 
   async talk(content: string, role: Message["role"] = "user") {
@@ -71,7 +89,10 @@ class Conversation {
   }
 
   reset() {
-    this.messages = initMessages();
+    this.messages = initMessages({
+      systemMsg: this.systemMsg,
+      userMsg: this.userMsg,
+    });
   }
 
   lastMessage() {
