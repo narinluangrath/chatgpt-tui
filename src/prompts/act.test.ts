@@ -14,9 +14,7 @@ describe("act function", () => {
   let conversation: Conversation;
 
   beforeEach(() => {
-    conversation = {
-      lastMessage: jest.fn(),
-    };
+    conversation = new Conversation({ apiKey: "" });
   });
 
   afterEach(() => {

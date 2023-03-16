@@ -23,7 +23,7 @@ describe("extractRelevent function", () => {
 
   it("should return code block when provided index", async () => {
     const response = "test response with code block\n```test code block```";
-    extractCodeBlocks.mockReturnValue(["test code block"]);
+    (extractCodeBlocks as jest.Mock).mockReturnValue(["test code block"]);
     const result = await extractRelevent(response);
     expect(result).toEqual("test code block");
   });
@@ -31,7 +31,7 @@ describe("extractRelevent function", () => {
   it("should prompt for index when multiple code blocks exist", async () => {
     const response =
       "test response with multiple code blocks\n```test code block 1```\n```test code block 2```";
-    extractCodeBlocks.mockReturnValue([
+    (extractCodeBlocks as jest.Mock).mockReturnValue([
       "test code block 1",
       "test code block 2",
     ]);

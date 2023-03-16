@@ -1,4 +1,5 @@
 import prompts from "prompts";
+import { Conversation } from "../utils/conversation";
 import { writeOutputToFile } from "../utils/write-output-to-file";
 import { extractRelevent } from "./extract-relevant";
 import { act } from "./act";
@@ -10,10 +11,10 @@ jest.mock("./extract-relevant");
 jest.mock("./act");
 
 describe("write function", () => {
-  // @ts-expect-error
   let conversation: Conversation;
 
   beforeEach(() => {
+    // @ts-expect-error
     conversation = {
       lastMessage: jest.fn().mockReturnValue({ content: "test content" }),
     };
@@ -31,7 +32,7 @@ describe("write function", () => {
 
   it("should write the output to the given file path and call act function with given conversation object", async () => {
     prompts.mockResolvedValue({ path: "test path" });
-    extractRelevent.mockResolvedValue("test content");
+    (extractRelevent as jest.Mock).mockResolvedValue("test content");
     await write(conversation);
     expect(writeOutputToFile).toHaveBeenCalledWith("test content", "test path");
     expect(act).toHaveBeenCalledWith(conversation);

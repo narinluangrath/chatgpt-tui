@@ -12,7 +12,10 @@ class MarkdownRenderer implements Renderer {
   private _inCodeBlock: boolean;
   private _inLanguage: boolean;
 
-  constructor({ text = "", render = (str) => process.stdout.write(str) } = {}) {
+  constructor({
+    text = "",
+    render = (str: string) => void process.stdout.write(str),
+  } = {}) {
     this._codeLineRenderer = new CodeLineRenderer({
       text,
       render: (str: string) => render(`${str}\n`),

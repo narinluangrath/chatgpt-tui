@@ -25,7 +25,7 @@ describe("Conversation", () => {
   });
 
   it("should create a Conversation instance with custom renderer", () => {
-    const mockRenderer = { foo: () => {}, bar: () => {} };
+    const mockRenderer = { injest: () => {}, flush: () => {} };
     const conversation = new Conversation({
       apiKey: "test-api-key",
       renderer: mockRenderer,
@@ -61,7 +61,9 @@ describe("Conversation", () => {
       .spyOn(console, "error")
       .mockImplementation(() => {});
     const conversation = new Conversation({ apiKey: "test-api-key" });
-    OpenAIApi.prototype.createChatCompletion.mockRejectedValueOnce("error");
+    (
+      OpenAIApi.prototype.createChatCompletion as jest.Mock
+    ).mockRejectedValueOnce("error");
 
     await conversation.talk("Hi");
 

@@ -30,8 +30,8 @@ describe("getCredentials function", () => {
   beforeEach(() => {
     jest.resetAllMocks();
 
-    fs.existsSync.mockReturnValue(false);
-    fs.readFileSync.mockReturnValue("");
+    (fs.existsSync as jest.Mock).mockReturnValue(false);
+    (fs.readFileSync as jest.Mock).mockReturnValue("");
     prompts.mockClear();
     prompts.mockResolvedValue({ apiKey: validApiKey });
   });
@@ -62,8 +62,8 @@ describe("getCredentials function", () => {
   });
 
   it("loads API key from ~/.gpt/credentials if it exists", async () => {
-    fs.existsSync.mockReturnValue(true);
-    fs.readFileSync.mockReturnValue(validApiKey);
+    (fs.existsSync as jest.Mock).mockReturnValue(true);
+    (fs.readFileSync as jest.Mock).mockReturnValue(validApiKey);
 
     const apiKey = await getCredentials();
 

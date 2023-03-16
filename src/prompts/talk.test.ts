@@ -12,7 +12,8 @@ describe("talk function", () => {
   let conversation: Conversation;
 
   beforeEach(() => {
-    parseUserInput.mockResolvedValue(["parsed test input", []]);
+    (parseUserInput as jest.Mock).mockResolvedValue(["parsed test input", []]);
+    // @ts-expect-error
     conversation = {
       lastMessage: jest.fn(),
       talk: jest.fn(),

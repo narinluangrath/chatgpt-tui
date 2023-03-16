@@ -10,7 +10,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
   const tempConsoleWarn = console.warn;
 
   beforeAll(() => {
-    puppeteer.launch.mockResolvedValue({
+    (puppeteer.launch as jest.Mock).mockResolvedValue({
       newPage: jest.fn().mockResolvedValue({
         goto: jest.fn(),
         evaluate: jest.fn().mockResolvedValue(mockContent),
@@ -49,7 +49,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
 
   it("handles $URL(<website>) placeholders with invalid URLs", async () => {
     console.warn = jest.fn();
-    puppeteer.launch.mockResolvedValue({
+    (puppeteer.launch as jest.Mock).mockResolvedValue({
       newPage: jest.fn().mockResolvedValue({
         goto: jest.fn().mockRejectedValue(new Error("Invalid URL")),
       }),

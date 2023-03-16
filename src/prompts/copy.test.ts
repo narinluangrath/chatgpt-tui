@@ -23,13 +23,13 @@ describe("copy function", () => {
   });
 
   it("should extract relevant information from the last message and copy it to clipboard", async () => {
-    extractRelevent.mockResolvedValue("test relevant");
+    (extractRelevent as jest.Mock).mockResolvedValue("test relevant");
     await copy(conversation);
     expect(clipboardy.writeSync).toHaveBeenCalledWith("test relevant");
   });
 
   it("should call act function with given conversation objet", async () => {
-    extractRelevent.mockResolvedValue("test relevant");
+    (extractRelevent as jest.Mock).mockResolvedValue("test relevant");
     await copy(conversation);
     expect(act).toHaveBeenCalledWith(conversation);
   });

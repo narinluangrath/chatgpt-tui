@@ -5,12 +5,8 @@
     "outDir": "dist",
     "sourceMap": true,
     "isolatedModules": true,
-    "moduleDetection": "force"
+    "esModuleInterop": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "tests"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["tests"]
 }
