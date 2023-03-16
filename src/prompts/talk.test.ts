@@ -13,6 +13,7 @@ describe("talk function", () => {
   let conversation: Conversation;
 
   beforeEach(() => {
+    parseUserInput.mockResolvedValue(["parsed test input", []]);
     conversation = {
       lastMessage: jest.fn(),
       talk: jest.fn(),
@@ -31,7 +32,6 @@ describe("talk function", () => {
 
   it("should parse the user input and send it to the conversation", async () => {
     prompts.mockResolvedValue({ input: "test input" });
-    parseUserInput.mockResolvedValue("parsed test input");
     await talk(conversation);
     expect(parseUserInput).toHaveBeenCalledWith("test input");
     expect(conversation.talk).toHaveBeenCalledWith("parsed test input");

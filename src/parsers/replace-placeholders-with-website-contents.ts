@@ -8,12 +8,13 @@ const puppeteer = require("puppeteer");
 async function replacePlaceholdersWithWebsiteContents(str) {
   const matches = str.match(/\$URL\((.*?)\)/g);
   if (!matches) {
-    return str;
+    return [str, []];
   }
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
+  const websiteUrls = [];
   for (const match of matches) {
     const pattern = /\$URL\((.*?)(\[(.*?):(.*?)\])?\)/;
     const [matchString, websiteUrl, _, startString, endString] =
@@ -37,6 +38,7 @@ async function replacePlaceholdersWithWebsiteContents(str) {
       }
 
       str = str.replace(matchString, pageContent.trim());
+      websiteUrls.push(websiteUrl);
     } catch (err) {
       console.warn(`Could not replace ${matchString}: ${err.message}`);
     }
@@ -44,7 +46,7 @@ async function replacePlaceholdersWithWebsiteContents(str) {
 
   await browser.close();
 
-  return str;
+  return [str, websiteUrls];
 }
 
 module.exports = { replacePlaceholdersWithWebsiteContents };

@@ -4,11 +4,12 @@ const { extractRelevent } = require("./extract-relevant");
 const { act } = require("./act");
 
 // @ts-expect-error
-async function write(conversation: Conversation) {
+async function write(conversation: Conversation, fileHint?: string) {
   const path = await prompts({
     type: "text",
     name: "path",
     message: "Enter a file path (hit esc to go back): ",
+    initial: fileHint,
   });
 
   if (!path.path) {

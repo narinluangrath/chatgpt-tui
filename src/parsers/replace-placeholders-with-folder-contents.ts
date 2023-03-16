@@ -9,9 +9,10 @@ const path = require("path");
 function replacePlaceholdersWithFolderContents(str) {
   const matches = str.match(/\$FOLDER\((.*?)\)/g);
   if (!matches) {
-    return str;
+    return [str, []];
   }
 
+  const folderNames = [];
   for (const match of matches) {
     const folderPath = match.slice("$FOLDER(".length, -1);
     try {
@@ -25,12 +26,13 @@ function replacePlaceholdersWithFolderContents(str) {
         })
         .join("\n\n");
       str = str.replace(match, fileContents);
+      folderNames.push(folderPath);
     } catch (err) {
       console.warn(`Could not replace ${match}: ${err.message}`);
     }
   }
 
-  return str;
+  return [str, folderNames];
 }
 
 module.exports = { replacePlaceholdersWithFolderContents };

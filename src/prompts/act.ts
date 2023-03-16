@@ -1,7 +1,7 @@
 const prompts = require("prompts");
 const { Conversation } = require("../utils/conversation");
 // @ts-expect-error
-async function act(conversation: Conversation) {
+async function act(conversation: Conversation, fileHint?: string) {
   // Circular imports causing problems...
   const { copy } = require("./copy");
   const { write } = require("./write");
@@ -28,7 +28,11 @@ async function act(conversation: Conversation) {
       copy(conversation);
       break;
     case "w":
-      write(conversation);
+      if (!fileHint) {
+        write(conversation);
+      } else {
+        write(conversation, fileHint);
+      }
       break;
     case "q":
       console.log("Goodbye!");

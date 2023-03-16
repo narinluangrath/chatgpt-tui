@@ -8,9 +8,10 @@ const fs = require("fs");
 function replacePlaceholdersWithFileContents(str) {
   const matches = str.match(/\$FILE\((.*?)\)/g);
   if (!matches) {
-    return str;
+    return [str, []];
   }
 
+  const fileNames = [];
   for (const match of matches) {
     const [fileName, range] = match.slice("$FILE(".length, -1).split("[");
     let startLine = 1;
@@ -31,12 +32,13 @@ function replacePlaceholdersWithFileContents(str) {
         .join("\n");
 
       str = str.replace(match, requestedContent);
+      fileNames.push(fileName);
     } catch (err) {
       console.warn(`Could not replace ${match}: ${err.message}`);
     }
   }
 
-  return str;
+  return [str, fileNames];
 }
 
 module.exports = { replacePlaceholdersWithFileContents };

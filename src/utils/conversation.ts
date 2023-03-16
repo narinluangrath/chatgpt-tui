@@ -14,17 +14,13 @@ const defaultSystemMessage = [
   "For example, ```javascript\nconsole.log('Hello, world!');```",
 ].join("");
 
-const initMessages = ({ systemMsg = defaultSystemMessage, userMsg }) => {
+const initMessages = ({ systemMsg = defaultSystemMessage }) => {
   const messages = [
     {
       role: "system",
       content: systemMsg,
     } as Message,
   ];
-
-  if (userMsg) {
-    messages.push({ role: "user", content: userMsg } as Message);
-  }
 
   return messages;
 };
@@ -35,7 +31,6 @@ interface ConversationConstructor {
   renderer?: Renderer;
   isDebug?: boolean;
   systemMsg?: string;
-  userMsg?: string;
 }
 
 class Conversation {
@@ -46,21 +41,18 @@ class Conversation {
   messages: Message[];
   isDebug: boolean;
   systemMsg: string;
-  userMsg: string;
 
   constructor({
     apiKey,
     renderer = new MarkdownRenderer(),
     isDebug = false,
     systemMsg,
-    userMsg,
   }: ConversationConstructor) {
     this._openai = new OpenAIApi(new Configuration({ apiKey }));
     this._renderer = renderer;
-    this.messages = initMessages({ systemMsg, userMsg });
+    this.messages = initMessages({ systemMsg });
     this.isDebug = isDebug;
     this.systemMsg = systemMsg;
-    this.userMsg = userMsg;
   }
 
   async talk(content: string, role: Message["role"] = "user") {
@@ -91,7 +83,6 @@ class Conversation {
   reset() {
     this.messages = initMessages({
       systemMsg: this.systemMsg,
-      userMsg: this.userMsg,
     });
   }
 

@@ -30,7 +30,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
     const input = "Hello $URL(https://www.example.com) World";
     const output = `Hello ${mockContent} World`;
     const result = await replacePlaceholdersWithWebsiteContents(input);
-    expect(result).toBe(output);
+    expect(result[0]).toBe(output);
   });
 
   it("handles multiple $URL(<website>) placeholders in the input string", async () => {
@@ -38,7 +38,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
       "1.$URL(https://www.example.com) 2.$URL(https://www.google.com) 3.$URL(https://www.github.com)";
     const output = `1.${mockContent} 2.${mockContent} 3.${mockContent}`;
     const result = await replacePlaceholdersWithWebsiteContents(input);
-    expect(result).toBe(output);
+    expect(result[0]).toBe(output);
   });
 
   it("replaces $URL(<website>[start_string:end_string]) with text between start_string and end_string", async () => {
@@ -46,7 +46,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
     const output =
       "Hello is the really good website content\nAnother line of World";
     const result = await replacePlaceholdersWithWebsiteContents(input);
-    expect(result).toBe(output);
+    expect(result[0]).toBe(output);
   });
 
   it("handles $URL(<website>) placeholders with invalid URLs", async () => {
@@ -60,7 +60,7 @@ describe("replacePlaceholdersWithWebsiteContents", () => {
     const input = "Hello $URL(invalid-url) World";
     const output = "Hello $URL(invalid-url) World";
     const result = await replacePlaceholdersWithWebsiteContents(input);
-    expect(result).toBe(output);
+    expect(result[0]).toBe(output);
     expect(console.warn).toHaveBeenCalled();
   });
 });

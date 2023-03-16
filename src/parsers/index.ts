@@ -14,15 +14,22 @@ const {
  * @return The parsed string.
  */
 async function parseUserInput(str) {
+  const allMetadata = [];
   const parsers = [
     replacePlaceholdersWithFileContents,
     replacePlaceholdersWithFolderContents,
     replacePlaceholdersWithWebsiteContents,
   ];
   for (const parser of parsers) {
-    str = await parser(str);
+    const [parsed, metadata] = await parser(str);
+    str = parsed;
+    if (parser === replacePlaceholdersWithFileContents) {
+      allMetadata.push(...metadata);
+    } else {
+      // I don't know what to do with the other metadata.
+    }
   }
-  return str;
+  return [str, allMetadata];
 }
 
 module.exports = {
