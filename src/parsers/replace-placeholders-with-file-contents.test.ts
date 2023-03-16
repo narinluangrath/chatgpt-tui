@@ -1,7 +1,5 @@
-const fs = require("fs");
-const {
-  replacePlaceholdersWithFileContents,
-} = require("./replace-placeholders-with-file-contents");
+import * as fs from "fs";
+import { replacePlaceholdersWithFileContents } from "./replace-placeholders-with-file-contents";
 
 describe("replacePlaceholdersWithFileContents", () => {
   const tempFiles = ["empty.txt", "test1.txt", "test2.txt", "test3.txt"];

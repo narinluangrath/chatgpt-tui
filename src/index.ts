@@ -1,12 +1,13 @@
-const util = require("util");
-const figlet = util.promisify(require("figlet"));
-const chalk = require("chalk");
-const { talk, act } = require("./prompts");
-const { parseUserInput } = require("./parsers");
-const { Conversation } = require("./utils/conversation");
-const { getCredentials } = require("./utils/get-credentials");
-const { program } = require("commander");
+import * as util from "util";
+import _figlet from "figlet";
+import chalk from "chalk";
+import { talk, act } from "./prompts";
+import { parseUserInput } from "./parsers";
+import { Conversation } from "./utils/conversation";
+import { getCredentials } from "./utils/get-credentials";
+import { program } from "commander";
 
+const figlet = util.promisify(_figlet);
 async function main({ systemMsg, userMsg }) {
   const figletText = await figlet("ChatGPT TUI");
   console.log(chalk.green.bold(figletText));

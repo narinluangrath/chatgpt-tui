@@ -1,7 +1,7 @@
-const { MarkdownRenderer } = require("./markdown-renderer");
-const markdownTokens = require("./test-data/markdown-tokens");
-const markdownTokensOutput = require("./test-data/markdown-tokens-output");
-const markdownTokens1 = require("./test-data/markdown-tokens-1");
+import { MarkdownRenderer } from "./markdown-renderer";
+import markdownTokens from "./test-data/markdown-tokens";
+import markdownTokensOutput from "./test-data/markdown-tokens-output";
+import markdownTokens1 from "./test-data/markdown-tokens-1";
 
 describe("MarkdownRenderer", () => {
   it("should correctly render markdown code", () => {

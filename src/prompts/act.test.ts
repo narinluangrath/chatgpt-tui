@@ -1,9 +1,9 @@
-const prompts = require("prompts");
-const { Conversation } = require("../utils/conversation");
-const { copy } = require("./copy");
-const { write } = require("./write");
-const { talk } = require("./talk");
-const { act } = require("./act");
+import prompts from "prompts";
+import { Conversation } from "../utils/conversation";
+import { copy } from "./copy";
+import { write } from "./write";
+import { talk } from "./talk";
+import { act } from "./act";
 
 jest.mock("./copy");
 jest.mock("./write");
@@ -11,7 +11,6 @@ jest.mock("./talk");
 jest.mock("prompts");
 
 describe("act function", () => {
-  // @ts-expect-error
   let conversation: Conversation;
 
   beforeEach(() => {

@@ -1,16 +1,14 @@
-const { LineRenderer } = require("./line-renderer");
-const { Renderer } = require("./index");
+import { LineRenderer } from "./line-renderer";
+import { Renderer } from "./index";
 
-const highlight = require("cli-highlight").highlight;
+import { highlight } from "cli-highlight";
 
 function isOnlyLetters(str) {
   return /^[a-zA-Z]+$/.test(str);
 }
 
-// @ts-expect-error
 class CodeLineRenderer implements Renderer {
   private _render: (output: string) => void;
-  // @ts-expect-error
   private _lineRenderer: LineRenderer;
 
   constructor({
@@ -45,4 +43,4 @@ class CodeLineRenderer implements Renderer {
   }
 }
 
-module.exports = { CodeLineRenderer };
+export { CodeLineRenderer };

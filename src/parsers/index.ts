@@ -32,7 +32,7 @@ async function parseUserInput(str) {
   return [str, allMetadata];
 }
 
-module.exports = {
+export {
   parseUserInput,
   replacePlaceholdersWithFileContents,
   replacePlaceholdersWithFolderContents,

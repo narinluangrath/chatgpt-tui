@@ -1,16 +1,13 @@
-const { Renderer } = require("./index");
-const { CodeLineRenderer } = require("./code-line-renderer");
-const { StandardRenderer } = require("./standard-renderer");
+import { Renderer } from "./index";
+import { CodeLineRenderer } from "./code-line-renderer";
+import { StandardRenderer } from "./standard-renderer";
 
 const START_OF_CODE_BLOCK = "\n```";
 const END_OF_CODE_BLOCK = "```\n";
 
-// @ts-expect-error
 class MarkdownRenderer implements Renderer {
   private _unrendered: string;
-  // @ts-expect-error
   private _codeLineRenderer: CodeLineRenderer;
-  // @ts-expect-error
   private _standardRenderer: StandardRenderer;
   private _inCodeBlock: boolean;
   private _inLanguage: boolean;
@@ -132,4 +129,4 @@ class MarkdownRenderer implements Renderer {
   }
 }
 
-module.exports = { MarkdownRenderer };
+export { MarkdownRenderer };

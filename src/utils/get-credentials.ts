@@ -1,5 +1,5 @@
-const fs = require("fs");
-const prompts = require("prompts");
+import * as fs from "fs";
+import prompts from "prompts";
 
 const GPT_FOLDER_PATH = `${process.env.HOME}/.gpt`;
 const CREDENTIALS_FILE_PATH = `${GPT_FOLDER_PATH}/credentials`;
@@ -40,7 +40,4 @@ async function getCredentials() {
   }
 }
 
-module.exports = {
-  validateApiKey,
-  getCredentials,
-};
+export { validateApiKey, getCredentials };

@@ -1,7 +1,7 @@
-const prompts = require("prompts");
-const highlight = require("cli-highlight").highlight;
-const chalk = require("chalk");
-const { extractCodeBlocks } = require("../utils/write-output-to-file");
+import prompts from "prompts";
+import { highlight } from "cli-highlight";
+import chalk from "chalk";
+import { extractCodeBlocks } from "../utils/write-output-to-file";
 
 async function extractRelevent(response: string) {
   const wantsCodeBlock = await prompts({
@@ -43,4 +43,4 @@ async function extractRelevent(response: string) {
   }
 }
 
-exports.extractRelevent = extractRelevent;
+export { extractRelevent };

@@ -1,6 +1,6 @@
-const { getCredentials, validateApiKey } = require("./get-credentials");
-const fs = require("fs");
-const prompts = require("prompts");
+import { getCredentials, validateApiKey } from "./get-credentials";
+import * as fs from "fs";
+import prompts from "prompts";
 
 jest.mock("fs");
 jest.mock("prompts");

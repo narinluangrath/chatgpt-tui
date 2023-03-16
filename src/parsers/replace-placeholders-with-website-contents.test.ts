@@ -1,7 +1,5 @@
-const {
-  replacePlaceholdersWithWebsiteContents,
-} = require("./replace-placeholders-with-website-contents");
-const puppeteer = require("puppeteer");
+import { replacePlaceholdersWithWebsiteContents } from "./replace-placeholders-with-website-contents";
+import puppeteer from "puppeteer";
 
 jest.mock("puppeteer");
 

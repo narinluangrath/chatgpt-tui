@@ -1,4 +1,4 @@
-const { extractCodeBlocks } = require("./write-output-to-file");
+import { extractCodeBlocks } from "./write-output-to-file";
 
 describe("extractCodeBlocks", () => {
   it("should extract code blocks with languages and filenames", () => {

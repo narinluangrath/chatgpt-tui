@@ -1,13 +1,5 @@
-const { Conversation } = require("./conversation");
-const { getCredentials } = require("./get-credentials");
-const {
-  writeOutputToFile,
-  extractCodeBlocks,
-} = require("./write-output-to-file");
+import { Conversation } from "./conversation";
+import { getCredentials } from "./get-credentials";
+import { writeOutputToFile, extractCodeBlocks } from "./write-output-to-file";
 
-module.exports = {
-  Conversation,
-  getCredentials,
-  writeOutputToFile,
-  extractCodeBlocks,
-};
+export { Conversation, getCredentials, writeOutputToFile, extractCodeBlocks };

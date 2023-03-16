@@ -1,9 +1,8 @@
-const prompts = require("prompts");
-const { Conversation } = require("../utils/conversation");
-const { parseUserInput } = require("../parsers");
-const { act } = require("./act");
+import prompts from "prompts";
+import { Conversation } from "../utils/conversation";
+import { parseUserInput } from "../parsers";
+import { act } from "./act";
 
-// @ts-expect-error
 async function talk(conversation: Conversation, canGoBack = true) {
   console.log("");
   const input = await prompts({
@@ -28,4 +27,4 @@ async function talk(conversation: Conversation, canGoBack = true) {
   }
 }
 
-exports.talk = talk;
+export { talk };

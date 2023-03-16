@@ -1,7 +1,7 @@
-const clipboardy = require("node-clipboardy");
-const { act } = require("./act");
-const { extractRelevent } = require("./extract-relevant");
-const { copy } = require("./copy");
+import clipboardy from "node-clipboardy";
+import { act } from "./act";
+import { extractRelevent } from "./extract-relevant";
+import { copy } from "./copy";
 
 jest.mock("node-clipboardy");
 jest.mock("./act");

@@ -1,7 +1,7 @@
-const prompts = require("prompts");
-const { writeOutputToFile } = require("../utils/write-output-to-file");
-const { extractRelevent } = require("./extract-relevant");
-const { act } = require("./act");
+import prompts from "prompts";
+import { writeOutputToFile } from "../utils/write-output-to-file";
+import { extractRelevent } from "./extract-relevant";
+import { act } from "./act";
 
 // @ts-expect-error
 async function write(conversation: Conversation, fileHint?: string) {
@@ -22,4 +22,4 @@ async function write(conversation: Conversation, fileHint?: string) {
   act(conversation);
 }
 
-exports.write = write;
+export { write };

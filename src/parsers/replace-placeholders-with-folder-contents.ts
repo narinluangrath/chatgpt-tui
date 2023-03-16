@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
+import * as fs from "fs";
+import * as path from "path";
 
-/**
+/*
  * Replaces $FOLDER(<folder path>) with the contents of all files in the folder.
  * @param str - The string to parse.
  * @return The parsed string with folder contents replaced.
@@ -35,4 +35,4 @@ function replacePlaceholdersWithFolderContents(str) {
   return [str, folderNames];
 }
 
-module.exports = { replacePlaceholdersWithFolderContents };
+export { replacePlaceholdersWithFolderContents };

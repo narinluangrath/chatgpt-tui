@@ -1,6 +1,6 @@
-const { Conversation, renderStreamResponse } = require("./conversation");
-const { MarkdownRenderer } = require("../renderers");
-const { OpenAIApi } = require("openai");
+import { Conversation, renderStreamResponse } from "./conversation";
+import { MarkdownRenderer } from "../renderers";
+import { OpenAIApi } from "openai";
 
 jest.mock("openai");
 

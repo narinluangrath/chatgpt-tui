@@ -1,4 +1,4 @@
-module.exports = `[32m// Pretty prints a date object[39m
+export default `[32m// Pretty prints a date object[39m
 [33m[34mfunction[39m[33m prettyPrintDate(date) [39m{
   [34mreturn[39m [31m\`\${date.getFullYear()}-\${date.getMonth() + [32m1[39m[31m}-\${date.getDate()}\`[39m;
 }

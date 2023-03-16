@@ -1,8 +1,8 @@
-const { CodeLineRenderer } = require("./code-line-renderer");
-const javascriptTokens0 = require("./test-data/javascript-tokens-0");
-const javascriptTokens0Output = require("./test-data/javascript-tokens-0-output");
-const javascriptTokens1 = require("./test-data/javascript-tokens-1");
-const javascriptTokens1Output = require("./test-data/javascript-tokens-1-output");
+import { CodeLineRenderer } from "./code-line-renderer";
+import javascriptTokens0 from "./test-data/javascript-tokens-0";
+import javascriptTokens0Output from "./test-data/javascript-tokens-0-output";
+import javascriptTokens1 from "./test-data/javascript-tokens-1";
+import javascriptTokens1Output from "./test-data/javascript-tokens-1-output";
 
 describe("CodeLineRenderer", () => {
   it("should correctly render javascript code", () => {

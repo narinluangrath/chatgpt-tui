@@ -1,5 +1,5 @@
-const fs = require("fs");
-const util = require("util");
+import * as fs from "fs";
+import * as util from "util";
 
 /**
  * @param str A string representing a markdown-style document with code blocks.
@@ -49,4 +49,4 @@ async function writeOutputToFile(output, filename) {
   }
 }
 
-module.exports = { writeOutputToFile, extractCodeBlocks };
+export { writeOutputToFile, extractCodeBlocks };

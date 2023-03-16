@@ -1,6 +1,6 @@
-const clipboardy = require("node-clipboardy");
-const { act } = require("./act");
-const { extractRelevent } = require("./extract-relevant");
+import clipboardy from "node-clipboardy";
+import { act } from "./act";
+import { extractRelevent } from "./extract-relevant";
 
 // @ts-expect-error
 async function copy(conversation: Conversation) {
@@ -10,4 +10,4 @@ async function copy(conversation: Conversation) {
   act(conversation);
 }
 
-exports.copy = copy;
+export { copy };

@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from "fs";
 
 /**
  * Replaces $FILE(<file name>[start_line:end_line]) with the contents of the file.
@@ -41,4 +41,4 @@ function replacePlaceholdersWithFileContents(str) {
   return [str, fileNames];
 }
 
-module.exports = { replacePlaceholdersWithFileContents };
+export { replacePlaceholdersWithFileContents };

@@ -1,15 +1,14 @@
-const prompts = require("prompts");
-const { Conversation } = require("../utils/conversation");
-const { parseUserInput } = require("../parsers");
-const { act } = require("./act");
-const { talk } = require("./talk");
+import prompts from "prompts";
+import { Conversation } from "../utils/conversation";
+import { parseUserInput } from "../parsers";
+import { act } from "./act";
+import { talk } from "./talk";
 
 jest.mock("prompts");
 jest.mock("../parsers");
 jest.mock("./act");
 
 describe("talk function", () => {
-  // @ts-expect-error
   let conversation: Conversation;
 
   beforeEach(() => {

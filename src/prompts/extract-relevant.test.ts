@@ -1,10 +1,9 @@
-const prompts = require("prompts");
-const { extractCodeBlocks } = require("../utils/write-output-to-file");
+import prompts from "prompts";
+import { extractCodeBlocks } from "../utils/write-output-to-file";
+import { extractRelevent } from "./extract-relevant";
 
 jest.mock("prompts");
 jest.mock("../utils/write-output-to-file");
-
-const { extractRelevent } = require("./extract-relevant");
 
 describe("extractRelevent function", () => {
   beforeEach(() => {

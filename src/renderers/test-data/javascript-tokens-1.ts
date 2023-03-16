@@ -15,7 +15,7 @@ const end = new Date(2021, 0, 1);
 console.log(timeDifference(start, end)); // { years: 1, months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0 }
 */
 
-module.exports = [
+export default [
   "const",
   " my",
   "Date",

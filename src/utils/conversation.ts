@@ -1,6 +1,6 @@
-const { Configuration, OpenAIApi } = require("openai");
-const { MarkdownRenderer, Renderer } = require("../renderers");
-const fs = require("fs");
+import { Configuration, OpenAIApi } from "openai";
+import { MarkdownRenderer, Renderer } from "../renderers";
+import * as fs from "fs";
 
 interface Message {
   role: "system" | "assistant" | "user";
@@ -27,16 +27,13 @@ const initMessages = ({ systemMsg = defaultSystemMessage }) => {
 
 interface ConversationConstructor {
   apiKey: string;
-  // @ts-expect-error
   renderer?: Renderer;
   isDebug?: boolean;
   systemMsg?: string;
 }
 
 class Conversation {
-  // @ts-expect-error (TS doesn't know about the OpenAIApi class)
   private _openai: OpenAIApi;
-  // @ts-expect-error
   private _renderer: Renderer;
   messages: Message[];
   isDebug: boolean;
@@ -134,4 +131,4 @@ async function renderStreamResponse(
   });
 }
 
-module.exports = { Conversation, renderStreamResponse };
+export { Conversation, renderStreamResponse };

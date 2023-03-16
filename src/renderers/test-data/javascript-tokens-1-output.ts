@@ -1,4 +1,4 @@
-module.exports = `[34mconst[39m myDate = [34mnew[39m [36mDate[39m([32m2021[39m, [32m3[39m, [32m1[39m);
+export default `[34mconst[39m myDate = [34mnew[39m [36mDate[39m([32m2021[39m, [32m3[39m, [32m1[39m);
 
 [32m// Pretty prints the date[39m
 [36mconsole[39m.log(prettyPrintDate(myDate)); [32m// "2021-4-1"[39m

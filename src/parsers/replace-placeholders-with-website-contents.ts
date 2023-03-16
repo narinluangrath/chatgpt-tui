@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
 /**
  * Replaces $URL(<website url>[start_string:end_string]) with the text contents of the website.
@@ -49,4 +49,4 @@ async function replacePlaceholdersWithWebsiteContents(str) {
   return [str, websiteUrls];
 }
 
-module.exports = { replacePlaceholdersWithWebsiteContents };
+export { replacePlaceholdersWithWebsiteContents };

@@ -1,8 +1,8 @@
-const prompts = require("prompts");
-const { writeOutputToFile } = require("../utils/write-output-to-file");
-const { extractRelevent } = require("./extract-relevant");
-const { act } = require("./act");
-const { write } = require("./write");
+import prompts from "prompts";
+import { writeOutputToFile } from "../utils/write-output-to-file";
+import { extractRelevent } from "./extract-relevant";
+import { act } from "./act";
+import { write } from "./write";
 
 jest.mock("prompts");
 jest.mock("../utils/write-output-to-file");

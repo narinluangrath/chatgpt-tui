@@ -1,4 +1,4 @@
-module.exports = `Sure! Here are some sample functions you can use:
+export default `Sure! Here are some sample functions you can use:
 
 \`\`\`javascript
 [32m// Pretty prints a date object[39m

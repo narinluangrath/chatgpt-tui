@@ -36,7 +36,7 @@ function timeDifference(start, end) {
 
 */
 
-module.exports = [
+export default [
   "//",
   " Pretty",
   " prints",

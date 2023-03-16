@@ -1,4 +1,4 @@
-const { LineRenderer } = require("./line-renderer");
+import { LineRenderer } from "./line-renderer";
 
 describe("LineRenderer", () => {
   let mockedRender;
