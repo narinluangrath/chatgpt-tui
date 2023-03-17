@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-tui",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "author": "Narin Luangrath <narin.luangrath@gmail.com>",
   "license": "MIT",
@@ -22,9 +22,9 @@
     "test": "jest",
     "precommit": "yarn test",
     "build": "tsc",
-    "deploy:patch": "npm run build && npm version patch && npm publish --access public",
-    "deploy:minor": "npm run build && npm version minor && npm publish --access public",
-    "deploy:major": "npm run build && npm version major && npm publish --access public"
+    "deploy:patch": "yarn build && npm version patch && npm publish --access public",
+    "deploy:minor": "yarn build && npm version minor && npm publish --access public",
+    "deploy:major": "yarn build && npm version major && npm publish --access public"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
