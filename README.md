@@ -1,19 +1,19 @@
 # ChatGPT-TUI
 
-A terminal user interface for ChatGPT.
+A terminal user interface for ChatGPT with an empasis on importing/exporting code (no more copy/pasting!).
 
 ![basic usage](./.README/basic-usage.png)
 
 Features:
 
-- ✒️ Syntax highlighting for code blocks
 - 🖨️ Export code blocks to files or copy to clipboard
 - 💾 Load code from files and insert into the conversation
 - 🌎 Load content from websites (i.e. documentation) and insert into the conversation
+- ✒️ Syntax highlighting for code blocks
 
-## Why not just GitHub Copilot?
+## Why not just use GitHub Copilot?
 
-You should! But one missing feature is the ability to iterate on a solution. For any non-trivial problem, its not likely the first solution you come up with is the best one. In fact, having the model ["think step by step"](https://github.com/openai/openai-cookbook/blob/main/techniques_to_improve_reliability.md#techniques-to-improve-reliability) dramatically improves its abilities on complex tasks. With ChatGPT-TUI, you can iterate on your solution and export it to a file (without all the copy/pasting).
+You should! But one missing feature is the ability to iterate on a solution. For non-trivial problems, its unlikely that the first solution it comes up with is correct. Having the model ["think step by step"](https://github.com/openai/openai-cookbook/blob/main/techniques_to_improve_reliability.md#techniques-to-improve-reliability) can dramatically improve its abilities on complex tasks. With ChatGPT-TUI, you can iterate on your solution and export it to a file (without all the copy/pasting).
 
 ## Quick Start
 
@@ -32,15 +32,27 @@ From there, you can start chatting with ChatGPT, much like you would with the [C
 
 You can load local files into the conversation by using the `$FILE(<path>)` syntax. For example, if you wanted to load the contents of `./src/index.ts` into the conversation, you would do:
 
+```
+The contents of ./src/index.ts are: \n\n $FILE(./src/index.ts)
+```
+
 ![loading a local file](./.README/loading-local-files.png)
+
+To load specific lines of a file (as opposed to the entire thing), add brackets after the path but before the closing parenthesis. For example, to load lines 1-5 of `./src/index.ts`, you would do:
+
+```
+This will load the first 5 lines of ./src/index.ts \n\n $FILE(./src/index.ts[1-5])
+```
 
 To load an entire directory, you can use the `$FOLDER(<path>)` syntax. Note, this is not reccomended because you will likely exceed the token limit.
 
-## Loading Content from Websites
+## Loading Content from Websites (experimental!)
 
 You can load content from websites into the conversation by using the `$URL(<url>)` syntax. For example, if you wanted to load the contents of [the OpenAI documentation](https://beta.openai.com/docs/) into the conversation, you would do:
 
 ![loading a website](./.README/loading-website.png)
+
+This feature is still a work in progress, bugs are expected.
 
 ## CLI Options
 
