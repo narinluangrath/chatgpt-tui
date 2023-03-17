@@ -43,7 +43,7 @@ The contents of ./src/index.ts are: \n\n $FILE(./src/index.ts)
 To load specific lines of a file (as opposed to the entire thing), add brackets after the path but before the closing parenthesis. For example, to load lines 1-5 of `./src/index.ts`, you would do:
 
 ```
-This will load the first 5 lines of ./src/index.ts \n\n $FILE(./src/index.ts[1-5])
+This will load the first 5 lines of ./src/index.ts \n\n $FILE(./src/index.ts[1:5])
 ```
 
 To load an entire directory, you can use the `$FOLDER(<path>)` syntax. Note, this is not reccomended because you will likely exceed the token limit.
