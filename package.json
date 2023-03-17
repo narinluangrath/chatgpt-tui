@@ -7,6 +7,9 @@
   "bin": {
     "chatgpt-tui": "dist/index.js"
   },
+  "engines": {
+    "node": ">=14.15.0"
+  },
   "dependencies": {
     "chalk": "4",
     "cli-highlight": "^2.1.11",
