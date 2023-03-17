@@ -2,14 +2,14 @@
 
 A terminal user interface for ChatGPT.
 
-![intro](./.README/intro.webm)
+![basic usage](./.README/basic-usage.png)
 
 Features:
 
-- Syntax highlighting for code blocks
-- Export code blocks to files or copy to clipboard
-- Load code from files and insert into the conversation
-- Load content from websites (i.e. documentation) and insert into the conversation
+- ✒️ Syntax highlighting for code blocks
+- 🖨️ Export code blocks to files or copy to clipboard
+- 💾 Load code from files and insert into the conversation
+- 🌎 Load content from websites (i.e. documentation) and insert into the conversation
 
 ## Why not just GitHub Copilot?
 
