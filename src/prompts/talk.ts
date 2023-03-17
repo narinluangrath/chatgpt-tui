@@ -17,7 +17,6 @@ async function talk(conversation: Conversation, canGoBack = true) {
 
   console.log("");
   const [parsedInput, metadata] = await parseUserInput(input.input);
-  console.log({ parsedInput });
   const firstFile = metadata[0];
   await conversation.talk(parsedInput);
   if (!firstFile) {

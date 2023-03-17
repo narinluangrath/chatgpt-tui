@@ -17,7 +17,6 @@ async function main({ systemMsg, userMsg }) {
     talk(conversation, false);
   } else {
     const [parsedMessage, metadata] = await parseUserInput(userMsg);
-    console.log({ parsedMessage });
     await conversation.talk(parsedMessage);
     act(conversation, metadata[0]);
   }
