@@ -21,10 +21,11 @@
     "dev": "ts-node src/index.ts",
     "test": "jest",
     "precommit": "yarn test",
-    "build": "tsc",
-    "deploy:patch": "yarn build && npm version patch && npm publish --access public",
-    "deploy:minor": "yarn build && npm version minor && npm publish --access public",
-    "deploy:major": "yarn build && npm version major && npm publish --access public"
+    "build": "rm -rf dist && tsc",
+    "shebang": "echo '#!/usr/bin/env node' | cat - dist/index.js > temp && mv temp dist/index.js && chmod +x dist/index.js",
+    "deploy:patch": "yarn build && yarn shebang && npm version patch && npm publish --access public",
+    "deploy:minor": "yarn build && yarn shebang && npm version minor && npm publish --access public",
+    "deploy:major": "yarn build && yarn shebang && npm version major && npm publish --access public"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
