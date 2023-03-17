@@ -2,6 +2,8 @@
 
 A terminal user interface for ChatGPT with an empasis on importing/exporting code (no more copy/pasting!).
 
+Should work for Node.js 14.15.0 and above.
+
 ![basic usage](./.README/basic-usage.png)
 
 Features:
