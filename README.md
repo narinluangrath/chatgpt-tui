@@ -66,11 +66,15 @@ For instance, to convert all the files in `./src` to use ES6 modules, you could 
 
 ```bash
 for file in ./src/\*; do
-npx chatgpt-tui --user-msg "Refactor this code to use ES6 modules $file \n\n \$FILE($file)"
+  npx chatgpt-tui --user-msg "Refactor this code to use ES6 modules $file \n\n \$FILE($file)"
 done
 ```
 
 Notice we had to escape the second `$` character in the user message. This is because bash will try to perform variable substitution, which we don't want, because we want it to be interpreted by ChatGPT-TUI.
+
+#### `--model`
+
+By default, we use the "gpt-3.5-turbo-0301" model. If you have access to [the GPT4 models](https://platform.openai.com/docs/models/gpt-4), you will greatly benefit from using those models.
 
 ## Future Features
 
@@ -89,7 +93,3 @@ Should print out the user message post transformations (i.e. after `$FILE` subst
 #### `--log-dir`
 
 Should log the entire conversation to a directory.
-
-#### `--model`
-
-Right now, we use the "gpt-3.5-turbo-0301" model. If some users have access to GPT4, they were greatly benefit from using that model.
