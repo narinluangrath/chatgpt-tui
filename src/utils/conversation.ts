@@ -14,7 +14,7 @@ const defaultSystemMessage = [
   "For example, ```javascript\nconsole.log('Hello, world!');```",
 ].join("");
 
-const initMessages = ({ systemMsg = defaultSystemMessage }) => {
+const initMessages = ({ systemMsg }) => {
   const messages = [
     {
       role: "system",
@@ -29,12 +29,14 @@ interface ConversationConstructor {
   apiKey: string;
   renderer?: Renderer;
   isDebug?: boolean;
+  model?: string;
   systemMsg?: string;
 }
 
 class Conversation {
   private _openai: OpenAIApi;
   private _renderer: Renderer;
+  model: string;
   messages: Message[];
   isDebug: boolean;
   systemMsg: string;
@@ -43,10 +45,12 @@ class Conversation {
     apiKey,
     renderer = new MarkdownRenderer(),
     isDebug = false,
-    systemMsg,
+    model = "gpt-3.5-turbo-0301",
+    systemMsg = defaultSystemMessage,
   }: ConversationConstructor) {
     this._openai = new OpenAIApi(new Configuration({ apiKey }));
     this._renderer = renderer;
+    this.model = model;
     this.messages = initMessages({ systemMsg });
     this.isDebug = isDebug;
     this.systemMsg = systemMsg;
@@ -57,7 +61,7 @@ class Conversation {
       this.messages.push({ role, content });
       const streamResponse = await this._openai.createChatCompletion(
         {
-          model: "gpt-3.5-turbo-0301",
+          model: this.model,
           messages: this.messages,
           stream: true,
         },

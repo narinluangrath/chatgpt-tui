@@ -8,11 +8,11 @@ import { getCredentials } from "./utils/get-credentials";
 import { program } from "commander";
 
 const figlet = util.promisify(_figlet);
-async function main({ systemMsg, userMsg }) {
+async function main({ systemMsg, userMsg, model }) {
   const figletText = await figlet("ChatGPT TUI");
   console.log(chalk.green.bold(figletText));
   const apiKey = await getCredentials();
-  const conversation = new Conversation({ apiKey, systemMsg });
+  const conversation = new Conversation({ apiKey, systemMsg, model });
   if (!userMsg) {
     talk(conversation, false);
   } else {
@@ -24,7 +24,11 @@ async function main({ systemMsg, userMsg }) {
 
 program
   .option("-s, --system-msg <msg>", "preload a system message string")
-  .option("-u, --user-msg <msg>", "preload a user message string");
+  .option("-u, --user-msg <msg>", "preload a user message string")
+  .option(
+    "-m, --model <model>",
+    "model to use for chat, defaults to gpt-3.5-turbo-0301"
+  );
 
 program.parse();
 
