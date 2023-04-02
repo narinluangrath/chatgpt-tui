@@ -5,12 +5,14 @@ import { talk, act } from "./prompts";
 import { parseUserInput } from "./parsers";
 import { Conversation } from "./utils/conversation";
 import { getCredentials } from "./utils/get-credentials";
+import { version } from "../package.json";
 import { program } from "commander";
 
 const figlet = util.promisify(_figlet);
 async function main({ systemMsg, userMsg, model }) {
   const figletText = await figlet("ChatGPT TUI");
   console.log(chalk.green.bold(figletText));
+  console.log(`Version: ${version}`);
   const apiKey = await getCredentials();
   const conversation = new Conversation({ apiKey, systemMsg, model });
   if (!userMsg) {
