@@ -1,12 +1,7 @@
-const {
-  replacePlaceholdersWithFileContents,
-} = require("./replace-placeholders-with-file-contents");
-const {
-  replacePlaceholdersWithFolderContents,
-} = require("./replace-placeholders-with-folder-contents");
-const {
-  replacePlaceholdersWithWebsiteContents,
-} = require("./replace-placeholders-with-website-contents");
+import { replacePlaceholdersWithFileContents } from "./replace-placeholders-with-file-contents";
+import { replacePlaceholdersWithFolderContents } from "./replace-placeholders-with-folder-contents";
+import { replacePlaceholdersWithWebsiteContents } from "./replace-placeholders-with-website-contents";
+import { getConfig } from "../utils/config";
 
 /**
  * Parses the user input string.
@@ -28,6 +23,11 @@ async function parseUserInput(str) {
     } else {
       // I don't know what to do with the other metadata.
     }
+  }
+  if (getConfig().debug) {
+    console.log("Parsed user input: ");
+    console.log(str);
+    console.log("");
   }
   return [str, allMetadata];
 }

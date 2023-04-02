@@ -76,6 +76,10 @@ Notice we had to escape the second `$` character in the user message. This is be
 
 By default, we use the "gpt-3.5-turbo-0301" model. If you have access to [the GPT4 models](https://platform.openai.com/docs/models/gpt-4), you will greatly benefit from using those models.
 
+#### `--debug`
+
+Prints out the user message post transformations (i.e. after `$FILE` substitutions are made).
+
 ## Future Features
 
 I hacked this together in a few days, so it's not very polished. Here are some features I plan to add:
@@ -85,10 +89,6 @@ I hacked this together in a few days, so it's not very polished. Here are some f
 Currently, the user has to select each code block individually to write to a file. I'd like to add a feature to export all code blocks at once.
 
 ### Add CLI options
-
-#### `--debug`
-
-Should print out the user message post transformations (i.e. after `$FILE` substitutions are made).
 
 #### `--log-dir`
 
