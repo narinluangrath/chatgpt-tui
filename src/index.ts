@@ -9,12 +9,14 @@ import { getCredentials } from "./utils/get-credentials";
 import { setConfig } from "./utils/config";
 
 const figlet = util.promisify(_figlet);
-async function main({ systemMsg, userMsg, model, debug }) {
+async function main({ systemMsg, userMsg, model, debug, quiet = false }) {
   if (debug) {
     setConfig({ debug });
   }
-  const figletText = await figlet("ChatGPT TUI");
-  console.log(chalk.green.bold(figletText));
+  if (!quiet) {
+    const figletText = await figlet("ChatGPT TUI");
+    console.log(chalk.green.bold(figletText));
+  }
   const apiKey = await getCredentials();
   const conversation = new Conversation({ apiKey, systemMsg, model });
   if (!userMsg) {
@@ -30,6 +32,7 @@ program
   .option("-s, --system-msg <msg>", "preload a system message string")
   .option("-u, --user-msg <msg>", "preload a user message string")
   .option("-d, --debug", "print out user messages post parsing")
+  .option("-q, --quiet", "disable figlet")
   .option(
     "-m, --model <model>",
     "model to use for chat, defaults to gpt-3.5-turbo-0301"
